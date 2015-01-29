@@ -148,16 +148,16 @@
     </ul>
   </div>
 
-  <% if current_page?(action: 'edit') %>
-      <h4>Merge Articles</h4>
-      <div class=''>
-        <%=text_field 'merge_with', 'id' %>
-      </div>
-      <button class="btn btn-default">Merge</button>
-  <% end %>
-
   </div>
 
+  <div>
+    <% if current_page?(action: 'edit') %>
+        <h4>Merge Articles</h4>
+        Article ID <%= text_field 'merge', 'with', :class => 'span1', name: :merge_with, :style => ' width: 20%' %><br>
+        <input type="submit" value="Merge"/>
+    <% end %>
+
+  </div>
 
 </div>
 
