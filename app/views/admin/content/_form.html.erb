@@ -148,15 +148,16 @@
     </ul>
   </div>
 
+  <% if current_page?(action: 'edit') %>
+      <h4>Merge Articles</h4>
+      <div class=''>
+        <%=text_field 'merge_with', 'id' %>
+      </div>
+      <button class="btn btn-default">Merge</button>
+  <% end %>
+
   </div>
-  <div class=''>
-    <h4><%= _("Merge Articles") %></h4>
-    <div class=''>
-      <label for="merge_with"><%= _('Article ID') %></label>
-      <input type="text_field" id="merge_with" name="merge_with" value="" size="15" />
-    </div>
-    <input id='merge_with_btn' type="submit" value="<%= _('Merge') %>" name="merge_with_btn" class='btn' />
-  </div>
+
 
 </div>
 

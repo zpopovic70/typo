@@ -142,6 +142,24 @@ class Admin::ContentController < Admin::BaseController
   def new_or_edit
     id = params[:id]
     id = params[:article][:id] if params[:article] && params[:article][:id]
+
+    # hw2 code
+    unless params[:merge_with].nil?
+      logger.info "Merge with is: #{params[:merge_with]}"
+      unless params[:merge_with][:id].blank?
+        logger.info "\n"
+        logger.info '!!!!!'
+        logger.info "merge article is #{params[:merge_with][:id]}"
+        logger.info "original article is #{params[:id]}"
+        logger.info "!!!!!"
+        logger.info "\n"
+        article_merge = Article.find_by_id(params[:merge_with][:id])
+        article = Article.find_by_id(params[:id])
+        article.merge_with(article_merge)
+      end
+    end
+    # hw2 code
+
     @article = Article.get_or_build_article(id)
     @article.text_filter = current_user.text_filter if current_user.simple_editor?
 

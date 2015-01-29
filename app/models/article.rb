@@ -122,6 +122,12 @@ class Article < Content
 
   end
 
+  def merge_with(article)
+    if self.id != article.id
+      self.update_attribute(:body, self.body + " " + article.body) unless article.nil?
+    end
+  end
+
   def year_url
     published_at.year.to_s
   end
